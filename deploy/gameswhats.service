@@ -1,0 +1,16 @@
+[Unit]
+Description=GamesWhats WhatsApp HTML Games Bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/gameswhats
+ExecStart=/usr/bin/npm start
+Restart=always
+RestartSec=5
+Environment=NODE_ENV=production
+User=root
+
+[Install]
+WantedBy=multi-user.target
