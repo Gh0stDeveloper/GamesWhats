@@ -2,13 +2,16 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { games, resolveGame } from '../dist/games/index.js'
 
-assert.equal(games.length, 8, 'GamesWhats must expose exactly the eight HTML mini games')
+assert.equal(games.length, 10, 'GamesWhats must expose exactly the ten HTML mini games')
 
-const ids = ['mario', 'dino', 'ninja', 'snake', 'spacedodge', 'doom', 'gato', 'damas']
+const ids = ['mario', 'dino', 'ninja', 'snake', 'tetris', 'pacman', 'spacedodge', 'doom', 'gato', 'damas']
 assert.deepEqual(games.map((game) => game.id), ids)
 assert.equal(resolveGame('checkers')?.id, 'damas')
 assert.equal(resolveGame('fruit')?.id, 'ninja')
 assert.equal(resolveGame('dinosaur')?.id, 'dino')
+assert.equal(resolveGame('packman')?.id, 'pacman')
+assert.equal(resolveGame('pac-man')?.id, 'pacman')
+assert.equal(resolveGame('tetrominos')?.id, 'tetris')
 
 for (const game of games) {
   const html = game.buildHtml()
